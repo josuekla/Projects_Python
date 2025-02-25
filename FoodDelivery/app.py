@@ -11,31 +11,38 @@ def exibir_menu():
 
 class Funcoes:
     def cadastrar_restaurante():
-        os.system("cls")
-        print("Cadastro de novos restaurantes\n")
+        Funcoes.exibir_subtitulo("Cadastrando novos restaurantes")
         nome_restaurante_novo = input("Digite o nome do novo restaurante que deseje cadastrar: ")
         restaurantes.append(nome_restaurante_novo)
         print(f"O restaurante {nome_restaurante_novo} foi cadastrado com sucesso!")
-        input("\nDigite qualquer tecla para voltar para o menu")
-        main()
+        Funcoes.voltar_ao_menu_principal()
     def listar():
         os.system("cls")
-        print("listar todos os restaurantes\n")
+        Funcoes.exibir_subtitulo("Listando todos os restaurantes")
         for restaurante in restaurantes:
             print(f".{restaurante}")
-        input("\nDigite qualquer tecla para voltar para o menu")
-        main()
+        Funcoes.voltar_ao_menu_principal()
+        
+        
 
     def ativar():
         pass 
     def sair():
         os.system("cls")
-        print("Você saiu!\n")    
-    def opcao_invalida():
-        print('Opção inválida, escolha um número de 1 ao 4!')
-        input("Digite qualquer tecla para voltar ao menu.")
+        Funcoes.exibir_subtitulo("Você está saindo.") 
+
+    def voltar_ao_menu_principal():
+        input("\nDigite qualquer tecla para voltar para o menu. ")
         main()
 
+    def opcao_invalida():
+        print('Opção inválida, escolha um número de 1 ao 4!')
+        Funcoes.voltar_ao_menu_principal()
+
+    def exibir_subtitulo(texto):
+        os.system('cls')
+        print(texto)
+        print()
 def escolhas():
 
     try:
