@@ -1,4 +1,7 @@
 import os
+
+restaurantes = ["pizza", "carne"]
+
 def exibir_menu():
     print("𝐹𝑜𝑜𝒹 𝒹𝑒𝓁𝒾𝓋𝑒𝓇𝓎\n")
     print('1. Cadastrar restaurante')
@@ -8,9 +11,21 @@ def exibir_menu():
 
 class Funcoes:
     def cadastrar_restaurante():
-        pass
+        os.system("cls")
+        print("Cadastro de novos restaurantes\n")
+        nome_restaurante_novo = input("Digite o nome do novo restaurante que deseje cadastrar: ")
+        restaurantes.append(nome_restaurante_novo)
+        print(f"O restaurante {nome_restaurante_novo} foi cadastrado com sucesso!")
+        input("\nDigite qualquer tecla para voltar para o menu")
+        main()
     def listar():
-        pass 
+        os.system("cls")
+        print("listar todos os restaurantes\n")
+        for restaurante in restaurantes:
+            print(f".{restaurante}")
+        input("\nDigite qualquer tecla para voltar para o menu")
+        main()
+
     def ativar():
         pass 
     def sair():
