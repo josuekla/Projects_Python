@@ -1,6 +1,8 @@
 import os
 
-restaurantes = ["pizza", "carne"]
+restaurantes = [{'nome' : 'Picanha na hora', 'categoria' : 'carnes', 'ativo' : True},
+                {'nome' : 'Acaí show', 'categoria' : 'acaí', 'ativo' : False},
+                {'nome' : 'JHamburgues', 'categoria' : 'Hamburger', 'ativo' : True}]
 
 def exibir_menu():
     print("𝐹𝑜𝑜𝒹 𝒹𝑒𝓁𝒾𝓋𝑒𝓇𝓎\n")
@@ -13,14 +15,16 @@ class Funcoes:
     def cadastrar_restaurante():
         Funcoes.exibir_subtitulo("Cadastrando novos restaurantes")
         nome_restaurante_novo = input("Digite o nome do novo restaurante que deseje cadastrar: ")
-        restaurantes.append(nome_restaurante_novo)
+        categoria_restaurante = input(f"Digite o nome da categoria do restaurante {nome_restaurante_novo}: ")
+        dados_restaurante = {'nome' : nome_restaurante_novo, 'categoria': categoria_restaurante, 'ativo': False}
+        restaurantes.append(dados_restaurante)
         print(f"O restaurante {nome_restaurante_novo} foi cadastrado com sucesso!")
         Funcoes.voltar_ao_menu_principal()
     def listar():
         os.system("cls")
         Funcoes.exibir_subtitulo("Listando todos os restaurantes")
         for restaurante in restaurantes:
-            print(f".{restaurante}")
+            print(f" - {restaurante['nome']} | {restaurante['categoria']} | {restaurante['ativo']}")
         Funcoes.voltar_ao_menu_principal()
         
         
@@ -60,8 +64,9 @@ def escolhas():
             Funcoes.sair()
         else:
             Funcoes.opcao_invalida()
-    except():
-        Funcoes.sair()
+    except Exception as e:
+        Funcoes.opcao_invalida()
+     
 
 def main():
     os.system("cls")
@@ -71,8 +76,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-print("test")
