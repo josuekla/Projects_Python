@@ -5,6 +5,7 @@ restaurantes = [{'nome' : 'Picanha na hora', 'categoria' : 'carnes', 'ativo' : T
                 {'nome' : 'JHamburgues', 'categoria' : 'Hamburger', 'ativo' : True}]
 
 def exibir_menu():
+    '''Essa função é para exibir o menu'''
     print("𝐹𝑜𝑜𝒹 𝒹𝑒𝓁𝒾𝓋𝑒𝓇𝓎\n")
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
@@ -12,7 +13,18 @@ def exibir_menu():
     print('4. Sair\n')
 
 class Funcoes:
+    '''Classe de todas as funções principais do programa'''
     def cadastrar_restaurante():
+        '''Cadastramento de novos restaurantes e suas categorias
+        
+        Inputs:
+        - Cadastro de novo restaurante
+        - Definir a categoria do restaurante
+
+        Outputs:
+        Novo cadastro de restaurante
+        
+        '''
         Funcoes.exibir_subtitulo("Cadastrando novos restaurantes")
         nome_restaurante_novo = input("Digite o nome do novo restaurante que deseje cadastrar: ")
         categoria_restaurante = input(f"Digite o nome da categoria do restaurante {nome_restaurante_novo}: ")
@@ -21,6 +33,7 @@ class Funcoes:
         print(f"O restaurante {nome_restaurante_novo} foi cadastrado com sucesso!")
         Funcoes.voltar_ao_menu_principal()
     def listar():
+        '''Listamento de todos os restaurantes cadastrado'''
         os.system("cls")
         Funcoes.exibir_subtitulo("Listando todos os restaurantes")
         print(f"{'Nome do restaurante'.ljust(23)} | {'categoria'.ljust(20)} | {'Estado de ativação'.ljust(20)}")
@@ -34,6 +47,7 @@ class Funcoes:
         
 
     def activate_restaurant():
+        '''Função para ativar o desativar o estado do restaurante'''
         Funcoes.exibir_subtitulo("alterando o estado de ativação do restaurantes")
         input_restaurante_ativacao = input("Digite o nome do restaurante que deseje alterar de estado: ")
         restaurante_encontrado = False
@@ -51,18 +65,22 @@ class Funcoes:
             print("Restaurante não encontrado, tente novamente.")
         Funcoes.voltar_ao_menu_principal()
     def sair():
+        '''Sair do programa'''
         os.system("cls")
         Funcoes.exibir_subtitulo("Você está saindo.") 
 
     def voltar_ao_menu_principal():
+        '''Voltar para o menu'''
         input("\nDigite qualquer tecla para voltar para o menu. ")
         main()
 
     def opcao_invalida():
+        '''Função para mostrar um erro e voltar para o Menu'''
         print('Opção inválida, escolha um número de 1 ao 4!')
         Funcoes.voltar_ao_menu_principal()
 
     def exibir_subtitulo(texto):
+        '''Função para exibir o títulos para todas as funções que for preciso'''
         os.system('cls')
         linha = '=' * len(texto)
         print(linha)
@@ -71,6 +89,7 @@ class Funcoes:
         print()
 
 def escolhas():
+    '''Função de lógica de todas as escolhas do usuário no sistema.'''
 
     try:
         escolha_cliente = int(input("Escolha uma das opções:"))
