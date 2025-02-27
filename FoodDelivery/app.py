@@ -8,7 +8,7 @@ def exibir_menu():
     print("𝐹𝑜𝑜𝒹 𝒹𝑒𝓁𝒾𝓋𝑒𝓇𝓎\n")
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
-    print('3. Ativar restaurante')
+    print('3. alterar o estado do restaurante')
     print('4. Sair\n')
 
 class Funcoes:
@@ -23,14 +23,33 @@ class Funcoes:
     def listar():
         os.system("cls")
         Funcoes.exibir_subtitulo("Listando todos os restaurantes")
+        print(f"{'Nome do restaurante'.ljust(23)} | {'categoria'.ljust(20)} | {'Estado de ativação'.ljust(20)}")
+        print("-" * 100)
         for restaurante in restaurantes:
-            print(f" - {restaurante['nome']} | {restaurante['categoria']} | {restaurante['ativo']}")
+            ativo = "Ativado" if restaurante['ativo'] else 'Desativado'
+            print(f" - {restaurante['nome'].ljust(20)} | {restaurante['categoria'].ljust(20)} | {ativo}")
+            print(f" - {restaurante['nome'].ljust(20)} | {restaurante['categoria'].ljust(20)} | {ativo}")
         Funcoes.voltar_ao_menu_principal()
         
         
 
-    def ativar():
-        pass 
+    def activate_restaurant():
+        Funcoes.exibir_subtitulo("alterando o estado de ativação do restaurantes")
+        input_restaurante_ativacao = input("Digite o nome do restaurante que deseje alterar de estado: ")
+        restaurante_encontrado = False
+
+        for restaurante in restaurantes:
+            if restaurante['nome'] == input_restaurante_ativacao:
+                restaurante_encontrado = True
+                restaurante['ativo'] = not restaurante['ativo']
+
+                mensagem = f"O restaurante {input_restaurante_ativacao} foi ativado com sucesso!" if restaurante['ativo'] else f"O restaurante {input_restaurante_ativacao} foi desativado com sucesso"
+                
+                print(mensagem)
+        
+        if not restaurante_encontrado: 
+            print("Restaurante não encontrado, tente novamente.")
+        Funcoes.voltar_ao_menu_principal()
     def sair():
         os.system("cls")
         Funcoes.exibir_subtitulo("Você está saindo.") 
@@ -45,8 +64,12 @@ class Funcoes:
 
     def exibir_subtitulo(texto):
         os.system('cls')
+        linha = '=' * len(texto)
+        print(linha)
         print(texto)
+        print(linha)
         print()
+
 def escolhas():
 
     try:
@@ -59,7 +82,7 @@ def escolhas():
         elif escolha_cliente == 2:
             Funcoes.listar()
         elif escolha_cliente == 3:
-            Funcoes.ativar()
+            Funcoes.activate_restaurant()
         elif escolha_cliente == 4:
             Funcoes.sair()
         else:
