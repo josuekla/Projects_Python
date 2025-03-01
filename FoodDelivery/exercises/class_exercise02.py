@@ -3,7 +3,6 @@ class ContaBancaria:
         self._titular = titular
         self._saldo = saldo
         self._ativo = False
-        self._cpf = 
 
     def __str__(self):
         return f'Olá {self._titular}! O seu saldo é R${self._saldo}'
